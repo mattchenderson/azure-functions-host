@@ -53,6 +53,11 @@ namespace Microsoft.Azure.WebJobs.Script.Extensions
             return default(TValue);
         }
 
+        public static bool IsAdminRequest(this HttpRequest request)
+        {
+            return request.Path.StartsWithSegments("/admin");
+        }
+
         public static bool IsAntaresInternalRequest(this HttpRequest request, IEnvironment environment = null)
         {
             environment = environment ?? SystemEnvironment.Instance;
